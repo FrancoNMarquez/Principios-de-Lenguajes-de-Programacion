@@ -13,6 +13,7 @@ digitosN :: Int -> Int
 digitosN p
     | p<10 = 1
     | p>=10 = digitosN (div p 10) + 1
+    |otherwise = 0
 
 --1634 = 1^4 + 6^4 + 3^4 + 4^4
 
@@ -20,6 +21,7 @@ auxiliar :: Int -> Int -> Int
 auxiliar m digitos
     | m < 10 = round (potencia m digitos)
     | m >= 10 = auxiliar (div m 10) digitos + round (potencia (mod m 10) digitos)
+    |otherwise = 0
 
 potencia :: Int -> Int -> Float
 -- 5^4 = 5x5x5x5
@@ -33,3 +35,4 @@ narcisomenores m
  | m > 1 && narciso m = show m ++ "\n" ++ narcisomenores (m-1)
  | m > 1 && not (narciso m) = narcisomenores (m-1)
  | m == 1 = "  " ++ show 1
+ |otherwise = "Error"
